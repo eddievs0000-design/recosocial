@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Reco – Play & Earn Real Cash</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #eef0f8;
+    --blue: #2d3fff;
+    --blue-light: #4f5dff;
+    --dark: #111118;
+    --muted: #8a8fa8;
+    --card: rgba(255,255,255,0.78);
+    --border: rgba(255,255,255,0.95);
+  }
+
+  html, body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; top: -200px; left: -150px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(100,120,255,0.15) 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; bottom: -150px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(160,80,255,0.1) 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
+  }
+
+  /* HEADER */
+  header {
+    position: relative; z-index: 10;
+    display: flex; align-items: center; justify-content: center;
+    padding: clamp(20px, 5vw, 32px) 20px 0;
+  }
+
+  .logo {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: white;
+    border-radius: 16px;
+    padding: 9px 18px 9px 10px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    text-decoration: none;
+  }
+  .logo-icon {
+    width: 34px; height: 34px;
+    background: linear-gradient(135deg, #2d3fff 0%, #a855f7 100%);
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    font-weight: 700; font-size: 18px; color: white;
+    letter-spacing: -1px;
+  }
+  .logo-bookmark {
+    position: absolute; bottom: -4px; right: -2px;
+    width: 13px; height: 17px;
+    background: rgba(255,255,255,0.88);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 75%, 0 100%);
+  }
+  .logo-text {
+    font-weight: 600; font-size: 18px;
+    color: var(--dark); letter-spacing: -0.3px;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative; z-index: 5;
+    text-align: center;
+    padding: clamp(36px, 8vw, 56px) 20px 16px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .checkmark {
+    width: clamp(44px, 12vw, 56px);
+    height: clamp(44px, 12vw, 56px);
+    background: var(--blue);
+    border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-bottom: clamp(14px, 4vw, 22px);
+    box-shadow: 0 6px 20px rgba(45,63,255,0.35);
+  }
+  .checkmark svg {
+    width: clamp(20px, 5vw, 28px);
+    height: clamp(20px, 5vw, 28px);
+  }
+
+  .hero h1 {
+    font-size: clamp(38px, 11vw, 78px);
+    font-weight: 900;
+    line-height: 1.04;
+    letter-spacing: clamp(-1.5px, -0.3vw, -2.5px);
+    color: var(--dark);
+  }
+  .hero h1 .accent {
+    color: var(--blue);
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: clamp(14px, 4vw, 17px);
+    color: var(--muted);
+    margin: clamp(14px, 4vw, 20px) auto 0;
+    font-weight: 400;
+    line-height: 1.65;
+    max-width: 380px;
+  }
+
+  /* STEPS */
+  .steps-wrap {
+    position: relative; z-index: 5;
+    max-width: 600px;
+    margin: clamp(24px, 6vw, 40px) auto 0;
+    padding: 0 16px;
+  }
+
+  .steps-card {
+    background: var(--card);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: clamp(22px, 6vw, 36px) clamp(18px, 5vw, 36px);
+    box-shadow: 0 4px 40px rgba(45,63,255,0.07), 0 1px 4px rgba(0,0,0,0.04);
+  }
+
+  .steps-title {
+    text-align: center;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(0,0,0,0.25);
+    margin-bottom: clamp(20px, 5vw, 30px);
+  }
+
+  .step {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: clamp(14px, 4vw, 20px) 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .step:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .step-num {
+    width: 30px; height: 30px; min-width: 30px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: white; font-weight: 700; font-size: 13px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 14px rgba(45,63,255,0.3);
+    margin-top: 1px;
+  }
+
+  .step h3 {
+    font-size: clamp(13px, 3.5vw, 15px);
+    font-weight: 700; color: var(--dark); margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .step p {
+    font-size: clamp(12px, 3vw, 13px);
+    color: var(--muted); line-height: 1.6;
+  }
+
+  /* CTA */
+  .cta-wrap {
+    position: relative; z-index: 5;
+    max-width: 600px;
+    margin: clamp(16px, 4vw, 22px) auto 0;
+    padding: 0 16px;
+  }
+
+  .download-btn {
+    display: flex; align-items: center; justify-content: center;
+    background: var(--blue);
+    color: white; border: none; width: 100%;
+    padding: clamp(16px, 5vw, 20px);
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(15px, 4vw, 17px); font-weight: 700;
+    cursor: pointer; letter-spacing: 0.03em;
+    border-radius: 16px;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(45,63,255,0.38);
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.15s;
+  }
+  .download-btn:active {
+    background: var(--blue-light);
+    transform: scale(0.98);
+  }
+
+  .spacer { height: clamp(36px, 8vw, 56px); }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="#">
+    <div class="logo-icon">r<div class="logo-bookmark"></div></div>
+    <span class="logo-text">reco</span>
+  </a>
+</header>
+
+<div class="hero">
+  <div class="checkmark">
+    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"/>
+    </svg>
+  </div>
+  <h1>
+    Play & Earn Real
+    <span class="accent">Cash</span>
+  </h1>
+  <p class="hero-sub">Download the app to start earning today.</p>
+</div>
+
+<div class="steps-wrap">
+  <div class="steps-card">
+    <div class="steps-title">Your Earning Journey</div>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        <h3>Start Today — Download the App</h3>
+        <p>Available on iOS — get started in seconds.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        <h3>Play Fun Games Daily</h3>
+        <p>Play games, test new apps, and take quick surveys — all while earning rewards!</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div>
+        <h3>Cash Out Your Rewards</h3>
+        <p>Payouts: PayPal, CashApp, Venmo, Crypto & Wire.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-wrap">
+  <a href="https://trksy.org/aff_c?offer_id=4618&aff_id=3483" class="download-btn" target="_blank">
+    Download Now
+  </a>
+</div>
+
+<div class="spacer"></div>
+
+</body>
+</html>
